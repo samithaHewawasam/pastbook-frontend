@@ -56,3 +56,9 @@ mongodb is used for database
 ```sh
 $ docker run -d -p 27017:27017  mongo
 ```
+
+### To generate JsDoc
+
+```sh
+$ jsdoc src -r -R README.md -d docs
+```
