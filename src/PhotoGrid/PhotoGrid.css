@@ -1,0 +1,26 @@
+.text-on-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  background: black;
+  width: 2em;
+  border-radius: 50%;
+  font-size: 1em;
+  height: 2em;
+  padding: 2%;
+}
+
+.user-photos {
+  padding: 5rem;
+}
+
+.user-photos-selected {
+  padding: 5rem;
+}
+
+.user-photos-selected button{
+  position: fixed;
+  bottom: 0;
+}

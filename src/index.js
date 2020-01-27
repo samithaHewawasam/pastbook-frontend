@@ -1,12 +1,46 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import createSagaMiddleware from "redux-saga";
+import * as serviceWorker from "./serviceWorker";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import { Router } from "react-router-dom";
+import { Provider } from "react-redux";
+import { ToastContainer } from 'react-toastify';
+import { routerMiddleware } from "connected-react-router";
+import { createBrowserHistory } from "history";
+import { createStore, compose, applyMiddleware } from "redux";
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+import reducers from "./reducers";
+import Routes from "./routes";
+import sagas from "./sagas";
+
+import "./index.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-toastify/dist/ReactToastify.css';
+
+const sagaMiddleware = createSagaMiddleware();
+const routerHistory = createBrowserHistory();
+
+const store = createStore(
+  reducers,
+  compose(
+    applyMiddleware(sagaMiddleware, routerMiddleware(routerHistory)),
+    typeof window !== "undefined" && window.devToolsExtension
+      ? window.devToolsExtension()
+      : f => f
+  )
+);
+sagaMiddleware.run(sagas);
+
+ReactDOM.render(
+  <Provider store={store}>
+    <Router history={routerHistory}>
+        <Routes/>
+        <ToastContainer />
+    </Router>
+  </Provider>,
+
+  document.getElementById("react-root")
+);
+
+serviceWorker.register();
