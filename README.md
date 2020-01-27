@@ -31,36 +31,28 @@ Install the dependencies and devDependencies and start the server.
 
 #### Pastbook Frontend
 ```sh
-$ cd pastbook
+$ cd pastbook-frontend
 $ npm install
 $ npm start
 ```
 
-For production environments...
+Plese use a port other than `3000` for frontend
+Ports config in `src/httpClient.js`
 
+#### Pastbook backend
 ```sh
-$ npm run build
+$ cd pastbook-backend
+$ npm install
+$ npm start
 ```
 
-### Docker
-Pastbook is very easy to install and deploy in a Docker container.
+Plese use a port `3000` backend
+Ports config for mongodb in `src/datasources/mongo.datasource.config.json`
 
-By default, the Docker will expose port 8080, so change this within the Dockerfile if necessary. When ready, simply use the Dockerfile to build the image.
+### Pastbook db
 
-```sh
-cd pastbook-frontend
-docker build --name pastbook-frontend -t .
-```
-This will create the Pastbook-frontend image and pull in the necessary dependencies. Be sure to swap out `${package.json.version}` with the actual version of Pastbook-frontend.
-
-Once done, run the Docker image and map the port to whatever you wish on your host. In this example, we simply map port 8000 of the host to port 3000 of the Docker (or whatever port was exposed in the Dockerfile):
+mongodb is used for database
 
 ```sh
-docker run -d -p 8000:3000 --restart="always" pastbook-frontend:${package.json.version}
-```
-
-Verify the deployment by navigating to your server address in your preferred browser.
-
-```sh
-127.0.0.1:8000
+$ docker run -d -p 27017:27017  mongo
 ```

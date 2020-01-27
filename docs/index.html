@@ -43,43 +43,55 @@
 
 
     <section>
-        <article><p>This project was bootstrapped with <a href="https://github.com/facebook/create-react-app">Create React App</a>.</p>
-<h2>Available Scripts</h2>
-<p>In the project directory, you can run:</p>
-<h3><code>yarn start</code></h3>
-<p>Runs the app in the development mode.<br />
-Open <a href="http://localhost:3000">http://localhost:3000</a> to view it in the browser.</p>
-<p>The page will reload if you make edits.<br />
-You will also see any lint errors in the console.</p>
-<h3><code>yarn test</code></h3>
-<p>Launches the test runner in the interactive watch mode.<br />
-See the section about <a href="https://facebook.github.io/create-react-app/docs/running-tests">running tests</a> for more information.</p>
-<h3><code>yarn build</code></h3>
-<p>Builds the app for production to the <code>build</code> folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.</p>
-<p>The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!</p>
-<p>See the section about <a href="https://facebook.github.io/create-react-app/docs/deployment">deployment</a> for more information.</p>
-<h3><code>yarn eject</code></h3>
-<p><strong>Note: this is a one-way operation. Once you <code>eject</code>, you can’t go back!</strong></p>
-<p>If you aren’t satisfied with the build tool and configuration choices, you can <code>eject</code> at any time. This command will remove the single build dependency from your project.</p>
-<p>Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except <code>eject</code> will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.</p>
-<p>You don’t have to ever use <code>eject</code>. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.</p>
-<h2>Learn More</h2>
-<p>You can learn more in the <a href="https://facebook.github.io/create-react-app/docs/getting-started">Create React App documentation</a>.</p>
-<p>To learn React, check out the <a href="https://reactjs.org/">React documentation</a>.</p>
-<h3>Code Splitting</h3>
-<p>This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting</p>
-<h3>Analyzing the Bundle Size</h3>
-<p>This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size</p>
-<h3>Making a Progressive Web App</h3>
-<p>This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app</p>
-<h3>Advanced Configuration</h3>
-<p>This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration</p>
-<h3>Deployment</h3>
-<p>This section has moved here: https://facebook.github.io/create-react-app/docs/deployment</p>
-<h3><code>yarn build</code> fails to minify</h3>
-<p>This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify</p></article>
+        <article><h1>PastBook Grid</h1>
+<p><a href="https://travis-ci.org/joemccann/dillinger"><img src="https://travis-ci.org/joemccann/dillinger.svg?branch=master" alt="Build Status"></a></p>
+<h3>Assessment:</h3>
+<ol>
+<li>Fetch the uploaded photos</li>
+<li>Show the uploaded photos to the user, so that they can make the selection and define the order</li>
+<li>Generate a photo grid from the selected photos</li>
+<li>Create a NodeJS API to save the selection</li>
+<li>On page reload, take the users directly to the photo grid</li>
+</ol>
+<p>There are two applications</p>
+<ul>
+<li>Pastbook frontend</li>
+<li>Pastbook backend</li>
+</ul>
+<h3>Tech</h3>
+<p>Dillinger uses a number of open source projects to work properly:</p>
+<ul>
+<li>[ reactjs.org ] - A JavaScript library for building user interfaces.</li>
+<li>[ loopback.io ] - A highly extensible Node.js and TypeScript framework.</li>
+<li>[ mongodb.com ] - The most popular database for modern apps.</li>
+<li>[react-bootstrap.github.io ] - The most popular front-end framework.</li>
+<li>[https://jsdoc.app] - Documentation generator for JavaScript,</li>
+<li>[docker.com] - Documentation generator for JavaScript,</li>
+</ul>
+<h3>Installation</h3>
+<p>Pastbook prefer <a href="https://nodejs.org/">Node.js</a> v8+ to run.</p>
+<p>Install the dependencies and devDependencies and start the server.</p>
+<h4>Pastbook Frontend</h4>
+<pre class="prettyprint source lang-sh"><code>$ cd pastbook
+$ npm install
+$ npm start
+</code></pre>
+<p>For production environments...</p>
+<pre class="prettyprint source lang-sh"><code>$ npm run build
+</code></pre>
+<h3>Docker</h3>
+<p>Pastbook is very easy to install and deploy in a Docker container.</p>
+<p>By default, the Docker will expose port 8080, so change this within the Dockerfile if necessary. When ready, simply use the Dockerfile to build the image.</p>
+<pre class="prettyprint source lang-sh"><code>cd pastbook-frontend
+docker build --name pastbook-frontend -t .
+</code></pre>
+<p>This will create the Pastbook-frontend image and pull in the necessary dependencies. Be sure to swap out <code>${package.json.version}</code> with the actual version of Pastbook-frontend.</p>
+<p>Once done, run the Docker image and map the port to whatever you wish on your host. In this example, we simply map port 8000 of the host to port 3000 of the Docker (or whatever port was exposed in the Dockerfile):</p>
+<pre class="prettyprint source lang-sh"><code>docker run -d -p 8000:3000 --restart=&quot;always&quot; pastbook-frontend:${package.json.version}
+</code></pre>
+<p>Verify the deployment by navigating to your server address in your preferred browser.</p>
+<pre class="prettyprint source lang-sh"><code>127.0.0.1:8000
+</code></pre></article>
     </section>
 
 
@@ -96,7 +108,7 @@ Your app is ready to be deployed!</p>
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Mon Jan 27 2020 18:21:39 GMT+0530 (IST)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Mon Jan 27 2020 18:46:18 GMT+0530 (IST)
 </footer>
 
 <script> prettyPrint(); </script>
